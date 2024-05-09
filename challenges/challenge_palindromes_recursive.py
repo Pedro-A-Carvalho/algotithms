@@ -1,7 +1,12 @@
 def is_palindrome_recursive(word, low_index, high_index):
     """Faça o código aqui."""
-    if word == "":
+    if not word:
         return False
-    if len(word) - 1 == high_index:
-        return word == is_palindrome_recursive(word, high_index, low_index)
-    return word[::-1]
+    cond = word[low_index] == word[high_index]
+    if low_index >= high_index:
+        return True
+    if cond:
+        return True and is_palindrome_recursive(
+            word, low_index + 1, high_index - 1
+        )
+    return False
